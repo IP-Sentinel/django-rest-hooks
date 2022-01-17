@@ -5,49 +5,17 @@ arch:
   - ppc64le
 
 python:
-  - "2.7"
-  - "3.4"
-  - "3.6"
   - "3.8"
+  - "3.9"
+  - "3.10"
 
 env:
-  - DJANGO_VERSION="1.5"
-  - DJANGO_VERSION="1.6"
-  - DJANGO_VERSION="1.7"
-  - DJANGO_VERSION="1.8"
-  - DJANGO_VERSION="1.9"
-  - DJANGO_VERSION="1.10"
-  - DJANGO_VERSION="1.11"
-  - DJANGO_VERSION="2.0"
+  - DJANGO_VERSION="4.0"
 
 install:
   - pip install -r devrequirements_${DJANGO_VERSION}.txt
 
 script: python runtests.py
-
-matrix:
-  exclude:
-    - python: "3.6"
-      env: DJANGO_VERSION="1.5"
-    - python: "3.6"
-      env: DJANGO_VERSION="1.6"
-    - python: "3.6"
-      env: DJANGO_VERSION="1.7"
-    - python: "2.7"
-      env: DJANGO_VERSION="2.0"
-    - python: "3.8"
-      env: DJANGO_VERSION="1.5"
-    - python: "3.8"
-      env: DJANGO_VERSION="1.6"
-    - python: "3.8"
-      env: DJANGO_VERSION="1.7"
-    - python: "3.8"
-      env: DJANGO_VERSION="1.8"
-    - python: "3.8"
-      env: DJANGO_VERSION="1.9"
-    - python: "3.8"
-      env: DJANGO_VERSION="1.10"
-      
 
 before_deploy:
   - pip install wheel
